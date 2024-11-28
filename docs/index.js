@@ -49,9 +49,32 @@ console.log(isPalindrome("racecar"))
   Salida: [1, 2]
 */
 
-function closestPair(arr) {
-  // Tu solución acá
+function closestPair(array) {
+    // Si el array tiene menos de 2 elementos, no hay posibilidad de comparar.
+    if (array.length < 2) {
+      return null;
+    }
+    // Ordenamos el array de menor a mayor
+    array.sort((a, b) => a - b);
+  
+    let minimaDiferencia = Infinity;  // Inicializamos la menor diferencia con un valor muy alto
+    let num1, num2;
+  
+    // Iteramos por el array comparando cada número con el siguiente
+    for (let i = 0; i < array.length - 1; i++) {
+      const diferencia = array[i + 1] - array[i];  // Diferencia entre números consecutivos
+  
+      if (diferencia < minimaDiferencia) {
+        minimaDiferencia = diferencia;
+        num1 = array[i];
+        num2 = array[i + 1];
+      }
+    }
+  
+    return [num1, num2];  // Retornamos los dos números más cercanos
 }
+
+console.log( closestPair([1, 5, 9, 12, 15]))
 
 
 /*
@@ -87,8 +110,39 @@ function closestPair(arr) {
 */
 
 class Calculator {
-  // Tu solución acá
+  constructor() {
+    this.lastResult = 0;  // Propiedad para almacenar el último resultado
+  }
+
+  add(a, b) {
+    this.lastResult = a + b;
+    return this.lastResult;
+  }
+
+  subtract(a, b) {
+    this.lastResult = a - b;
+    return this.lastResult;
+  }
+
+  multiply(a, b) {
+    this.lastResult = a * b;
+    return this.lastResult;
+  }
+
+  divide(a, b) {
+    if (b === 0) {
+      throw new Error("No se puede dividir entre cero.");
+    }
+    this.lastResult = a / b;
+    return this.lastResult;
+  }
+
+  // Método para obtener el último resultado calculado
+  getLastResult() {
+    return this.lastResult;
+  }
 }
+
 
 module.exports = {
   closestPair,
