@@ -3,9 +3,19 @@
   Escribe una función reverseString que tome una cadena como entrada y devuelva la cadena invertida.
 */
 
+
 function reverseString(str) {
-  // Tu solución acá  
+var cadenarevertida = "";
+//Itero la cadena de manera inversa
+for(var i = str.length-1; i>=0; i--)
+{
+  //Voy concatenando el valor a la cadena resultado
+  cadenarevertida += str[i];
 }
+console.log(cadenarevertida); 
+}
+
+reverseString("holamundo")
 
 /*
   Ejercicio 2: Check for Palindrome
@@ -13,9 +23,19 @@ function reverseString(str) {
   y devuelva true si la cadena es un palíndromo, y false en caso contrario.
 */
 function isPalindrome(str) {
-  // Tu solución acá
-}
+    var re = /[^A-Za-z0-9]/g;
+    str = str.toLowerCase().replace(re,"");
+    // var len = str.length;
 
+    for (var i = 0; i < str.length/2; i++) {
+      if (str[i] !== str[str.length - 1 - i]) {
+          return false;
+      }
+    }
+    return true;
+   }
+
+console.log(isPalindrome("racecar"))
 /*
   Ejercicio 3: Find the Nearest Pair
   Dado un array de números enteros, 
